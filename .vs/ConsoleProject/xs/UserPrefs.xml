@@ -1,11 +1,12 @@
 ﻿<Properties GitUserInfo="UsingMD">
-  <MonoDevelop.Ide.Workbench ActiveDocument="ConsoleProject.DataAccess/Contexts/DbContext.cs">
+  <MonoDevelop.Ide.Workbench ActiveDocument="ConsoleProject.DataAccess/Interfaces/IRepository.cs">
     <Files>
       <File FileName="ConsoleProject.Core/Interfaces/IEntity.cs" />
-      <File FileName="ConsoleProject.Core/Entities/Employee.cs" />
+      <File FileName="ConsoleProject.Core/Entities/Employee.cs" Line="1" Column="1" />
       <File FileName="ConsoleProject.Core/Entities/Department.cs" />
       <File FileName="ConsoleProject.Core/Entities/Company.cs" />
-      <File FileName="ConsoleProject.DataAccess/Contexts/DbContext.cs" Line="12" Column="1" />
+      <File FileName="ConsoleProject.DataAccess/Contexts/DbContext.cs" />
+      <File FileName="ConsoleProject.DataAccess/Interfaces/IRepository.cs" Line="5" Column="1" />
     </Files>
     <Pads>
       <Pad Id="ProjectPad">
@@ -16,8 +17,9 @@
               <Node name="Interfaces" expanded="True" />
             </Node>
             <Node name="ConsoleProject.DataAccess">
-              <Node name="Contexts" expanded="True">
-                <Node name="DbContext.cs" selected="True" />
+              <Node name="Contexts" expanded="True" />
+              <Node name="Interfaces" expanded="True">
+                <Node name="IRepository.cs" selected="True" />
               </Node>
             </Node>
           </Node>

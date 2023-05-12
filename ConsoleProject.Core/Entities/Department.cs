@@ -1,6 +1,8 @@
-﻿namespace ConsoleProject.Core.Entities;
+﻿using ConsoleProject.Core.Interfaces;
 
-public class Department
+namespace ConsoleProject.Core.Entities;
+
+public class Department:IEntity
 {
     private static int _id;
     public int Id { get; }
