@@ -1,25 +1,18 @@
 ﻿<Properties GitUserInfo="UsingMD">
-  <MonoDevelop.Ide.Workbench ActiveDocument="ConsoleProject.DataAccess/Implementations/EmployeeRepository.cs">
+  <MonoDevelop.Ide.Workbench ActiveDocument="ConsoleProject.DataAccess/Implementations/DepartmentRepository.cs">
     <Files>
-      <File FileName="ConsoleProject.Core/Interfaces/IEntity.cs" />
+      <File FileName="ConsoleProject.DataAccess/Implementations/EmployeeRepository.cs" />
+      <File FileName="ConsoleProject.DataAccess/Implementations/DepartmentRepository.cs" Line="4" Column="1" />
       <File FileName="ConsoleProject.Core/Entities/Employee.cs" />
       <File FileName="ConsoleProject.Core/Entities/Department.cs" />
-      <File FileName="ConsoleProject.Core/Entities/Company.cs" />
-      <File FileName="ConsoleProject.DataAccess/Contexts/DbContext.cs" />
-      <File FileName="ConsoleProject.DataAccess/Interfaces/IRepository.cs" Line="11" Column="7" />
-      <File FileName="ConsoleProject.DataAccess/Implementations/EmployeeRepository.cs" Line="21" Column="50" />
     </Files>
     <Pads>
       <Pad Id="ProjectPad">
         <State name="__root__">
           <Node name="ConsoleProject" expanded="True">
-            <Node name="ConsoleProject.Core" expanded="True">
-              <Node name="Entities" expanded="True" />
-              <Node name="Interfaces" expanded="True" />
-            </Node>
-            <Node name="ConsoleProject.DataAccess">
+            <Node name="ConsoleProject.DataAccess" expanded="True">
               <Node name="Implementations" expanded="True">
-                <Node name="EmployeeRepository.cs" selected="True" />
+                <Node name="DepartmentRepository.cs" selected="True" />
               </Node>
               <Node name="Interfaces" expanded="True" />
             </Node>
