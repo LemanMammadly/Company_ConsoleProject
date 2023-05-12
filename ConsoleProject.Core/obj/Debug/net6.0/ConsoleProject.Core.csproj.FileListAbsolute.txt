@@ -1,0 +1,12 @@
+/Users/imac/Projects/ConsoleProject/ConsoleProject.Core/bin/Debug/net6.0/ConsoleProject.Core.deps.json
+/Users/imac/Projects/ConsoleProject/ConsoleProject.Core/bin/Debug/net6.0/ConsoleProject.Core.dll
+/Users/imac/Projects/ConsoleProject/ConsoleProject.Core/bin/Debug/net6.0/ref/ConsoleProject.Core.dll
+/Users/imac/Projects/ConsoleProject/ConsoleProject.Core/bin/Debug/net6.0/ConsoleProject.Core.pdb
+/Users/imac/Projects/ConsoleProject/ConsoleProject.Core/obj/Debug/net6.0/ConsoleProject.Core.csproj.AssemblyReference.cache
+/Users/imac/Projects/ConsoleProject/ConsoleProject.Core/obj/Debug/net6.0/ConsoleProject.Core.GeneratedMSBuildEditorConfig.editorconfig
+/Users/imac/Projects/ConsoleProject/ConsoleProject.Core/obj/Debug/net6.0/ConsoleProject.Core.AssemblyInfoInputs.cache
+/Users/imac/Projects/ConsoleProject/ConsoleProject.Core/obj/Debug/net6.0/ConsoleProject.Core.AssemblyInfo.cs
+/Users/imac/Projects/ConsoleProject/ConsoleProject.Core/obj/Debug/net6.0/ConsoleProject.Core.csproj.CoreCompileInputs.cache
+/Users/imac/Projects/ConsoleProject/ConsoleProject.Core/obj/Debug/net6.0/ConsoleProject.Core.dll
+/Users/imac/Projects/ConsoleProject/ConsoleProject.Core/obj/Debug/net6.0/ref/ConsoleProject.Core.dll
+/Users/imac/Projects/ConsoleProject/ConsoleProject.Core/obj/Debug/net6.0/ConsoleProject.Core.pdb
