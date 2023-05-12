@@ -1,0 +1,17 @@
+/Users/imac/Projects/ConsoleProject/ConsoleProject.Business/bin/Debug/net6.0/ConsoleProject.Business.deps.json
+/Users/imac/Projects/ConsoleProject/ConsoleProject.Business/bin/Debug/net6.0/ConsoleProject.Business.dll
+/Users/imac/Projects/ConsoleProject/ConsoleProject.Business/bin/Debug/net6.0/ref/ConsoleProject.Business.dll
+/Users/imac/Projects/ConsoleProject/ConsoleProject.Business/bin/Debug/net6.0/ConsoleProject.Business.pdb
+/Users/imac/Projects/ConsoleProject/ConsoleProject.Business/bin/Debug/net6.0/ConsoleProject.Core.dll
+/Users/imac/Projects/ConsoleProject/ConsoleProject.Business/bin/Debug/net6.0/ConsoleProject.DataAccess.dll
+/Users/imac/Projects/ConsoleProject/ConsoleProject.Business/bin/Debug/net6.0/ConsoleProject.DataAccess.pdb
+/Users/imac/Projects/ConsoleProject/ConsoleProject.Business/bin/Debug/net6.0/ConsoleProject.Core.pdb
+/Users/imac/Projects/ConsoleProject/ConsoleProject.Business/obj/Debug/net6.0/ConsoleProject.Business.csproj.AssemblyReference.cache
+/Users/imac/Projects/ConsoleProject/ConsoleProject.Business/obj/Debug/net6.0/ConsoleProject.Business.GeneratedMSBuildEditorConfig.editorconfig
+/Users/imac/Projects/ConsoleProject/ConsoleProject.Business/obj/Debug/net6.0/ConsoleProject.Business.AssemblyInfoInputs.cache
+/Users/imac/Projects/ConsoleProject/ConsoleProject.Business/obj/Debug/net6.0/ConsoleProject.Business.AssemblyInfo.cs
+/Users/imac/Projects/ConsoleProject/ConsoleProject.Business/obj/Debug/net6.0/ConsoleProject.Business.csproj.CoreCompileInputs.cache
+/Users/imac/Projects/ConsoleProject/ConsoleProject.Business/obj/Debug/net6.0/ConsoleProject.Business.csproj.CopyComplete
+/Users/imac/Projects/ConsoleProject/ConsoleProject.Business/obj/Debug/net6.0/ConsoleProject.Business.dll
+/Users/imac/Projects/ConsoleProject/ConsoleProject.Business/obj/Debug/net6.0/ref/ConsoleProject.Business.dll
+/Users/imac/Projects/ConsoleProject/ConsoleProject.Business/obj/Debug/net6.0/ConsoleProject.Business.pdb

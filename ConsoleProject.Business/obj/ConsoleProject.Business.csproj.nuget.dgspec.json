@@ -1,0 +1,172 @@
+{
+  "format": 1,
+  "restore": {
+    "/Users/imac/Projects/ConsoleProject/ConsoleProject.Business/ConsoleProject.Business.csproj": {}
+  },
+  "projects": {
+    "/Users/imac/Projects/ConsoleProject/ConsoleProject.Business/ConsoleProject.Business.csproj": {
+      "version": "1.0.0",
+      "restore": {
+        "projectUniqueName": "/Users/imac/Projects/ConsoleProject/ConsoleProject.Business/ConsoleProject.Business.csproj",
+        "projectName": "ConsoleProject.Business",
+        "projectPath": "/Users/imac/Projects/ConsoleProject/ConsoleProject.Business/ConsoleProject.Business.csproj",
+        "packagesPath": "/Users/imac/.nuget/packages/",
+        "outputPath": "/Users/imac/Projects/ConsoleProject/ConsoleProject.Business/obj/",
+        "projectStyle": "PackageReference",
+        "configFilePaths": [
+          "/Users/imac/.nuget/NuGet/NuGet.Config"
+        ],
+        "originalTargetFrameworks": [
+          "net6.0"
+        ],
+        "sources": {
+          "https://api.nuget.org/v3/index.json": {}
+        },
+        "frameworks": {
+          "net6.0": {
+            "targetAlias": "net6.0",
+            "projectReferences": {
+              "/Users/imac/Projects/ConsoleProject/ConsoleProject.DataAccess/ConsoleProject.DataAccess.csproj": {
+                "projectPath": "/Users/imac/Projects/ConsoleProject/ConsoleProject.DataAccess/ConsoleProject.DataAccess.csproj"
+              }
+            }
+          }
+        },
+        "warningProperties": {
+          "warnAsError": [
+            "NU1605"
+          ]
+        }
+      },
+      "frameworks": {
+        "net6.0": {
+          "targetAlias": "net6.0",
+          "imports": [
+            "net461",
+            "net462",
+            "net47",
+            "net471",
+            "net472",
+            "net48"
+          ],
+          "assetTargetFallback": true,
+          "warn": true,
+          "frameworkReferences": {
+            "Microsoft.NETCore.App": {
+              "privateAssets": "all"
+            }
+          },
+          "runtimeIdentifierGraphPath": "/usr/local/share/dotnet/sdk/6.0.100/RuntimeIdentifierGraph.json"
+        }
+      }
+    },
+    "/Users/imac/Projects/ConsoleProject/ConsoleProject.Core/ConsoleProject.Core.csproj": {
+      "version": "1.0.0",
+      "restore": {
+        "projectUniqueName": "/Users/imac/Projects/ConsoleProject/ConsoleProject.Core/ConsoleProject.Core.csproj",
+        "projectName": "ConsoleProject.Core",
+        "projectPath": "/Users/imac/Projects/ConsoleProject/ConsoleProject.Core/ConsoleProject.Core.csproj",
+        "packagesPath": "/Users/imac/.nuget/packages/",
+        "outputPath": "/Users/imac/Projects/ConsoleProject/ConsoleProject.Core/obj/",
+        "projectStyle": "PackageReference",
+        "configFilePaths": [
+          "/Users/imac/.nuget/NuGet/NuGet.Config"
+        ],
+        "originalTargetFrameworks": [
+          "net6.0"
+        ],
+        "sources": {
+          "https://api.nuget.org/v3/index.json": {}
+        },
+        "frameworks": {
+          "net6.0": {
+            "targetAlias": "net6.0",
+            "projectReferences": {}
+          }
+        },
+        "warningProperties": {
+          "warnAsError": [
+            "NU1605"
+          ]
+        }
+      },
+      "frameworks": {
+        "net6.0": {
+          "targetAlias": "net6.0",
+          "imports": [
+            "net461",
+            "net462",
+            "net47",
+            "net471",
+            "net472",
+            "net48"
+          ],
+          "assetTargetFallback": true,
+          "warn": true,
+          "frameworkReferences": {
+            "Microsoft.NETCore.App": {
+              "privateAssets": "all"
+            }
+          },
+          "runtimeIdentifierGraphPath": "/usr/local/share/dotnet/sdk/6.0.100/RuntimeIdentifierGraph.json"
+        }
+      }
+    },
+    "/Users/imac/Projects/ConsoleProject/ConsoleProject.DataAccess/ConsoleProject.DataAccess.csproj": {
+      "version": "1.0.0",
+      "restore": {
+        "projectUniqueName": "/Users/imac/Projects/ConsoleProject/ConsoleProject.DataAccess/ConsoleProject.DataAccess.csproj",
+        "projectName": "ConsoleProject.DataAccess",
+        "projectPath": "/Users/imac/Projects/ConsoleProject/ConsoleProject.DataAccess/ConsoleProject.DataAccess.csproj",
+        "packagesPath": "/Users/imac/.nuget/packages/",
+        "outputPath": "/Users/imac/Projects/ConsoleProject/ConsoleProject.DataAccess/obj/",
+        "projectStyle": "PackageReference",
+        "configFilePaths": [
+          "/Users/imac/.nuget/NuGet/NuGet.Config"
+        ],
+        "originalTargetFrameworks": [
+          "net6.0"
+        ],
+        "sources": {
+          "https://api.nuget.org/v3/index.json": {}
+        },
+        "frameworks": {
+          "net6.0": {
+            "targetAlias": "net6.0",
+            "projectReferences": {
+              "/Users/imac/Projects/ConsoleProject/ConsoleProject.Core/ConsoleProject.Core.csproj": {
+                "projectPath": "/Users/imac/Projects/ConsoleProject/ConsoleProject.Core/ConsoleProject.Core.csproj"
+              }
+            }
+          }
+        },
+        "warningProperties": {
+          "warnAsError": [
+            "NU1605"
+          ]
+        }
+      },
+      "frameworks": {
+        "net6.0": {
+          "targetAlias": "net6.0",
+          "imports": [
+            "net461",
+            "net462",
+            "net47",
+            "net471",
+            "net472",
+            "net48"
+          ],
+          "assetTargetFallback": true,
+          "warn": true,
+          "frameworkReferences": {
+            "Microsoft.NETCore.App": {
+              "privateAssets": "all"
+            }
+          },
+          "runtimeIdentifierGraphPath": "/usr/local/share/dotnet/sdk/6.0.100/RuntimeIdentifierGraph.json"
+        }
+      }
+    }
+  }
+}
