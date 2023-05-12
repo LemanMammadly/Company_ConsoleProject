@@ -1,4 +1,5 @@
-﻿<Properties GitUserInfo="UsingMD">
+﻿<Properties GitUserInfo="UsingMD" StartupConfiguration="{1D47664C-35DF-4B59-A724-8A83F260F3E8}|Default">
+  <MonoDevelop.Ide.ItemProperties.ConsoleProject.ConsoleAppUI PreferredExecutionTarget="MonoDevelop.Default" FirstBuild="True" />
   <MonoDevelop.Ide.Workbench ActiveDocument="ConsoleProject.DataAccess/Implementations/CompanyRepository.cs">
     <Files>
       <File FileName="ConsoleProject.Core/Entities/Department.cs" Line="1" Column="1" />
@@ -29,8 +30,6 @@
   </MonoDevelop.Ide.Workbench>
   <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" />
   <MultiItemStartupConfigurations />
-  <MonoDevelop.Ide.DebuggingService.Breakpoints>
-    <BreakpointStore />
-  </MonoDevelop.Ide.DebuggingService.Breakpoints>
+  <MonoDevelop.Ide.DebuggingService.Breakpoints />
   <MonoDevelop.Ide.DebuggingService.PinnedWatches />
 </Properties>

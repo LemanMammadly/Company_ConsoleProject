@@ -55,19 +55,35 @@ public class CompanyService : ICompanyInterface
         }
     }
 
+    public void Update(Company company, string newCompanyName)
+    {
+        var exits = companyRepository.Get(company.Id);
+        if(exits == null)
+        {
+            throw new ObjectNotFoundException(Helper.Errors["ObjectNotFoundException"]);
+        }
+        if(exits.CompanyName.ToUpper()!=newCompanyName.ToUpper())
+        {
+            throw new SameNameException(Helper.Errors["SameNameException"]);
+        }
+        //exits.CompanyName = newCompanyName;
+        companyRepository.Update(exits);
+    }
+
+
     public List<Company> GetAll()
     {
-        throw new NotImplementedException();
+        return companyRepository.GetAll();
     }
 
     public Company GetById(int id)
     {
-        throw new NotImplementedException();
-    }
-
-    public void Update(int id)
-    {
-        throw new NotImplementedException();
+        var exist = companyRepository.Get(id);
+        if(exist==null)
+        {
+            throw new ObjectNotFoundException(Helper.Errors["ObjectNotFoundException"]);
+        }
+        return exist;
     }
 }
 
