@@ -1,25 +1,26 @@
 ﻿<Properties GitUserInfo="UsingMD">
-  <MonoDevelop.Ide.Workbench ActiveDocument="ConsoleProject.Business/Interfaces/ICompanyInterface.cs">
+  <MonoDevelop.Ide.Workbench ActiveDocument="ConsoleProject.DataAccess/Implementations/CompanyRepository.cs">
     <Files>
-      <File FileName="ConsoleProject.DataAccess/Implementations/EmployeeRepository.cs" />
-      <File FileName="ConsoleProject.DataAccess/Implementations/DepartmentRepository.cs" />
-      <File FileName="ConsoleProject.Core/Entities/Employee.cs" />
-      <File FileName="ConsoleProject.Core/Entities/Department.cs" />
-      <File FileName="ConsoleProject.DataAccess/Implementations/CompanyRepository.cs" />
-      <File FileName="ConsoleProject.Core/Entities/Company.cs" />
-      <File FileName="ConsoleProject.Business/Interfaces/ICompanyInterface.cs" Line="14" Column="1" />
+      <File FileName="ConsoleProject.Core/Entities/Department.cs" Line="1" Column="1" />
+      <File FileName="ConsoleProject.DataAccess/Implementations/DepartmentRepository.cs" Line="28" Column="6" />
+      <File FileName="ConsoleProject.Business/Services/CompanyService.cs" Line="46" Column="39" />
+      <File FileName="ConsoleProject.DataAccess/Implementations/CompanyRepository.cs" Line="15" Column="6" />
+      <File FileName="ConsoleProject.DataAccess/Interfaces/IRepository.cs" Line="13" Column="2" />
+      <File FileName="ConsoleProject.DataAccess/Implementations/EmployeeRepository.cs" Line="1" Column="1" />
     </Files>
     <Pads>
       <Pad Id="ProjectPad">
         <State name="__root__">
           <Node name="ConsoleProject" expanded="True">
             <Node name="ConsoleProject.Business">
-              <Node name="Interfaces" expanded="True">
-                <Node name="ICompanyInterface.cs" selected="True" />
-              </Node>
+              <Node name="Interfaces" expanded="True" />
+              <Node name="Services" expanded="True" />
             </Node>
-            <Node name="ConsoleProject.DataAccess" expanded="True">
-              <Node name="Implementations" expanded="True" />
+            <Node name="ConsoleProject.DataAccess">
+              <Node name="Implementations" expanded="True">
+                <Node name="CompanyRepository.cs" selected="True" />
+              </Node>
+              <Node name="Interfaces" expanded="True" />
             </Node>
           </Node>
         </State>

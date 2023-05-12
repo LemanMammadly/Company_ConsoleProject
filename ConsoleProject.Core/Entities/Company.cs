@@ -13,5 +13,10 @@ public class Company:IEntity
         Id = _id;
         _id++;
     }
+
+    public Company(string companyName):this()
+    {
+        CompanyName = companyName;
+    }
 }
 
