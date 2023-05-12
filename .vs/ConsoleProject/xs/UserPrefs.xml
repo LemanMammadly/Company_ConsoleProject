@@ -1,15 +1,23 @@
 ﻿<Properties GitUserInfo="UsingMD">
-  <MonoDevelop.Ide.Workbench ActiveDocument="ConsoleProject.Core/Entities/IEntity.cs">
+  <MonoDevelop.Ide.Workbench ActiveDocument="ConsoleProject.DataAccess/Contexts/DbContext.cs">
     <Files>
-      <File FileName="ConsoleProject.Core/Entities/IEntity.cs" Line="4" Column="2" />
+      <File FileName="ConsoleProject.Core/Interfaces/IEntity.cs" />
+      <File FileName="ConsoleProject.Core/Entities/Employee.cs" />
+      <File FileName="ConsoleProject.Core/Entities/Department.cs" />
+      <File FileName="ConsoleProject.Core/Entities/Company.cs" />
+      <File FileName="ConsoleProject.DataAccess/Contexts/DbContext.cs" Line="12" Column="1" />
     </Files>
     <Pads>
       <Pad Id="ProjectPad">
         <State name="__root__">
           <Node name="ConsoleProject" expanded="True">
             <Node name="ConsoleProject.Core" expanded="True">
-              <Node name="Entities" expanded="True">
-                <Node name="IEntity.cs" selected="True" />
+              <Node name="Entities" expanded="True" />
+              <Node name="Interfaces" expanded="True" />
+            </Node>
+            <Node name="ConsoleProject.DataAccess">
+              <Node name="Contexts" expanded="True">
+                <Node name="DbContext.cs" selected="True" />
               </Node>
             </Node>
           </Node>
@@ -19,6 +27,8 @@
   </MonoDevelop.Ide.Workbench>
   <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" />
   <MultiItemStartupConfigurations />
-  <MonoDevelop.Ide.DebuggingService.Breakpoints />
+  <MonoDevelop.Ide.DebuggingService.Breakpoints>
+    <BreakpointStore />
+  </MonoDevelop.Ide.DebuggingService.Breakpoints>
   <MonoDevelop.Ide.DebuggingService.PinnedWatches />
 </Properties>
