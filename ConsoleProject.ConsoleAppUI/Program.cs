@@ -45,10 +45,19 @@ DepartmentService departmentService = new DepartmentService();
 
 Console.WriteLine("department");
 departmentService.Create("sdf", 1, 1);
-departmentService.Create("asdd", 1, 2);
-departmentService.Delete(0);
+departmentService.Create("asdd", 1, 1);
+departmentService.Create("adsad", 1, 2);
+//departmentService.Delete(0);
 
-companyService.Delete(1);
+//companyService.Delete(1);
 
 
 //departmentService.Delete(0);
+
+companyService.GetAllDepartment("sdfss");
+
+
+foreach (Department item in companyService.GetAllDepartment("sdfss"))
+{
+    Console.WriteLine(item);
+}

@@ -95,7 +95,24 @@ public class CompanyService : ICompanyInterface
 
     public List<Department> GetAllDepartment(string companyName)
     {
-        throw new NotImplementedException();
+        var exists = companyRepository.GetByName(companyName);
+        if (exists != null)
+        {
+            var exitsDepartment = departmentRepository.GetCompaniesId(exists.Id);
+            if (exitsDepartment != null) 
+            {
+                return exitsDepartment;
+            }
+            else
+            {
+                throw new ObjectNotFoundException(Helper.Errors["ObjectNotFoundException"]);
+            }
+        }
+        else
+        {
+            throw new ObjectNotFoundException(Helper.Errors["ObjectNotFoundException"]);
+        }
+ 
     }
 }
 
