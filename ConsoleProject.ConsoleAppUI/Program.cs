@@ -112,13 +112,16 @@ employeeService.Update(4, "laman", "Mammadli", 1, 2);
 
 employeeService.Delete(2);
 
-foreach (Employee item in departmentService.GetDepartmentEmployees("sdf"))
-{
-    Console.WriteLine(item);
-}
+//foreach (Employee item in departmentService.GetDepartmentEmployees("sdf"))
+//{
+//    Console.WriteLine(item);
+//}
 
 
-foreach (Employee item in departmentService.GetDepartmentEmployees("asdd"))
-{
-    Console.WriteLine(item);
-}
+//foreach (Employee item in employeeService.GetAll())
+//{
+//    Console.WriteLine(item);
+//}
+
+
+Console.WriteLine(employeeService.GetById(3)); 
