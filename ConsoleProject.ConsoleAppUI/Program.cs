@@ -77,8 +77,8 @@ DepartmentService departmentService = new DepartmentService();
 EmployeeService employeeService = new EmployeeService();
 
 departmentService.Create("sdf", 5, 1);
-//departmentService.Create("asdd", 1, 1);
-//departmentService.Create("adsad", 1, 2);
+departmentService.Create("asdd", 1, 1);
+departmentService.Create("adsad", 1, 2);
 
 Employee employee = new Employee("Laman", "Mammadly", 1);
 Employee employee1 = new Employee("Laman", "Mammadly", 1);
@@ -96,6 +96,7 @@ employeeService.Create(employee3);
 employeeService.Create(employee4);
 
 
+
 departmentService.AddEmployee(employee,1);
 departmentService.AddEmployee(employee1,1);
 departmentService.AddEmployee(employee2,1);
@@ -104,9 +105,18 @@ departmentService.AddEmployee(employee4,1);
 departmentService.AddEmployee(employee5,1);
 
 
+employeeService.Update(4, "laman", "Mammadli", 1, 2);
+
+
 //departmentService.Update("sdsdf", "sdF", 2);
 
-//foreach (Employee item in departmentService.GetDepartmentEmployees("sdf"))
-//{
-//    Console.WriteLine(item);
-//}
+foreach (Employee item in departmentService.GetDepartmentEmployees("sdf"))
+{
+    Console.WriteLine(item);
+}
+
+
+foreach (Employee item in departmentService.GetDepartmentEmployees("asdd"))
+{
+    Console.WriteLine(item);
+}
