@@ -30,7 +30,9 @@ public class CompanyService : ICompanyInterface
         {
             throw new AlreadyExistException(Helper.Errors["AlreadyExistException"]);
         }
+        Thread.Sleep(1000);
         Company company = new Company(name);
+        company.creationTime = DateTime.Now;
         companyRepository.Add(company);
 
     }
@@ -40,14 +42,15 @@ public class CompanyService : ICompanyInterface
         var exits = companyRepository.Get(id);
         if(exits != null)
         {
-            if(departmentRepository.GetCompaniesId(id)==null)
-            {
-                companyRepository.Delete(id);
-            }
-            else
-            {
-                throw new ObjectNotFoundException(Helper.Errors["ObjectNotFoundException"]);
-            }
+            companyRepository.Delete(id);
+            //if(departmentRepository.GetCompaniesId(id)==null)
+            //{
+            //    companyRepository.Delete(id);
+            //}
+            //else
+            //{
+            //    throw new ObjectNotFoundException(Helper.Errors["ObjectNotFoundException"]);
+            //}
         }
         else
         {

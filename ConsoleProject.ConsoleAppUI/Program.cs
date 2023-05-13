@@ -1,5 +1,4 @@
-﻿
-using ConsoleProject.Business.Services;
+﻿using ConsoleProject.Business.Services;
 using ConsoleProject.Core.Entities;
 
 
@@ -9,23 +8,34 @@ Console.WriteLine("firts");
 companyService.Create("sdfsd");
 
 
+
+
 Console.WriteLine("second");
-companyService.Create("sdfs");
+companyService.Create("sdk");
 
 
-companyService.GetAll();
+Console.WriteLine("third");
+companyService.Create("sdfss");
 
-
-
-companyService.Update("sdfs", "1");
-//companyService.Delete(1);
 
 foreach (Company item in companyService.GetAll())
 {
-    Console.WriteLine(item.Id);
+    Console.WriteLine($"{item.CompanyName}   {item.creationTime}");
 }
 
-//Console.WriteLine(companyService.GetById(1).ToString());
+//Console.WriteLine(companyService.GetById(1));
 
 
 //companyService.Delete(3);
+
+companyService.Create("sdffw");
+
+
+foreach (Company item in companyService.GetAll())
+{
+    Console.WriteLine($"{item.CompanyName}   {item.creationTime}");
+}
+
+
+
+companyService.Create("qwewqe");
