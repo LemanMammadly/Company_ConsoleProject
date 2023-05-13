@@ -55,18 +55,23 @@ public class CompanyService : ICompanyInterface
         }
     }
 
-    public void Update(Company company, string newCompanyName)
+    public void Update(string companyName, string newCompanyName)
     {
-        var exits = companyRepository.Get(company.Id);
+        var exits = companyRepository.GetByName(companyName);
+        string name = newCompanyName.Trim();
+        if(name.Length<=0)
+        {
+            throw new SizeExceptions(Helper.Errors["SizeExceptions"]);
+        }
         if(exits == null)
         {
             throw new ObjectNotFoundException(Helper.Errors["ObjectNotFoundException"]);
         }
-        if(exits.CompanyName.ToUpper()!=newCompanyName.ToUpper())
+        if(exits.CompanyName.ToUpper()==newCompanyName.ToUpper())
         {
             throw new SameNameException(Helper.Errors["SameNameException"]);
         }
-        //exits.CompanyName = newCompanyName;
+        exits.CompanyName = newCompanyName;
         companyRepository.Update(exits);
     }
 

@@ -6,7 +6,7 @@ public interface ICompanyInterface
 {
     void Create(string companyName);
     void Delete(int id);
-    void Update(Company company,string newCompanyName);
+    void Update(string companyName,string newCompanyName);
     Company GetById(int id);
     List<Company> GetAll();
 }
