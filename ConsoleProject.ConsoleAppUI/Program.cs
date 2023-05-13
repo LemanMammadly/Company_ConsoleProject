@@ -40,13 +40,9 @@ foreach (Company item in companyService.GetAll())
 //companyService.Create("qwewqe");
 
 
-DepartmentService departmentService = new DepartmentService();
 
 
-Console.WriteLine("department");
-departmentService.Create("sdf", 1, 1);
-departmentService.Create("asdd", 1, 1);
-departmentService.Create("adsad", 1, 2);
+
 //departmentService.Delete(0);
 
 //companyService.Delete(1);
@@ -71,15 +67,27 @@ companyService.GetAllDepartment("sdfss");
 //}
 
 
+
+
+Console.WriteLine("employe");
+//employeeService.Create("Laman", "", 1);
+//Console.WriteLine("department");
+
+DepartmentService departmentService = new DepartmentService();
 EmployeeService employeeService = new EmployeeService();
 
-
-Console.WriteLine("employe"); 
-//employeeService.Create("Laman", "", 1);
+departmentService.Create("sdf", 2, 1);
+departmentService.Create("asdd", 4, 1);
+departmentService.Create("adsad", 5, 2);
 
 Employee employee = new Employee("Laman", "Mammadly", 1);
+Employee employee1 = new Employee("Laman", "Mammadly", 1);
+
+
+
 employeeService.Create(employee);
 
 
-departmentService.AddEmployee(employee);
+departmentService.AddEmployee(employee,1);
+departmentService.AddEmployee(employee1, 1);
 

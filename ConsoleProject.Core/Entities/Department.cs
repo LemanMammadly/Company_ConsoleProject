@@ -12,8 +12,8 @@ public class Department:IEntity
 
     public Department()
     {
-        Id = _id;
         _id++;
+        Id = _id;
     }
 
     public Department(string departmentName,int employeeLimit,int companyId):this()

@@ -11,8 +11,8 @@ public class Company:IEntity
 
     public Company()
     {
-        Id = _id;
         _id++;
+        Id = _id;
         creationTime = DateTime.Now;
     }
 

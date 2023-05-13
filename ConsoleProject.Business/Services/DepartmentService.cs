@@ -85,19 +85,30 @@ public class DepartmentService : IDepartmentInterface
         return exists;
     }
 
-    public void AddEmployee(Employee employee)
+    public void AddEmployee(Employee employee, int departmentId)
     {
-        var existId = employeeRepository.Get(employee.DepartmentId);
-        if (existId == null) 
+        var existsDepartmentId = departmentRepository.Get(departmentId);
+        if (employee.DepartmentId != 0) 
+        {
+            throw new EmployeeHasDepartmentIdException(Helper.Errors["EmployeeHasDepartmentIdException"]);
+        }
+        if(existsDepartmentId==null)
         {
             throw new ObjectNotFoundException(Helper.Errors["ObjectNotFoundException"]);
         }
-        existId.DepartmentId = employee.DepartmentId;
+        if(GetDepartmentEmployees(existsDepartmentId.DepartmentName).Count>=existsDepartmentId.EmployeeLimit)
+        {
+            throw new CapacityLimitException(Helper.Errors["CapacityLimitException"]);
+        }
+        employee.DepartmentId = departmentId;
     }
+
 
     public List<Employee> GetDepartmentEmployees(string departmentName)
     {
-        throw new NotImplementedException();
+        var departmentId = departmentRepository.GetByName(departmentName);
+        var employess = employeeRepository.GetAlDepartmentId(departmentId.Id);
+        return employess;
     }
 
 }

@@ -12,8 +12,8 @@ public class Employee:IEntity
 
     public Employee()
     {
-        Id = _id;
         _id++;
+        Id = _id;
     }
 
     public Employee(string name,string surname,decimal salary):this()

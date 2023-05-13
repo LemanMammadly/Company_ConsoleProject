@@ -9,7 +9,7 @@ public interface IDepartmentInterface
     void Update(string departmentName, string newDepartmentName,int newLimit);
     Department GetById(int id);
     List<Department> GetAll();
-    void AddEmployee(Employee employee);
+    void AddEmployee(Employee employee,int departmentId);
     List<Employee> GetDepartmentEmployees(string departmentName);
 }
 
