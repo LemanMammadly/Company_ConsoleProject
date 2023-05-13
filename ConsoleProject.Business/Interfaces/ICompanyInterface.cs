@@ -9,5 +9,6 @@ public interface ICompanyInterface
     void Update(string companyName,string newCompanyName);
     Company GetById(int id);
     List<Company> GetAll();
+    List<Department> GetAllDepartment(string companyName);
 }
 
