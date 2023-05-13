@@ -62,10 +62,24 @@ companyService.GetAllDepartment("sdfss");
 //    Console.WriteLine(item);
 //}
 
-Console.WriteLine(departmentService.GetById(0));
+//Console.WriteLine(departmentService.GetById(0));
 
 
-foreach (Department item in departmentService.GetAll())
-{
-    Console.WriteLine(item);
-}
+//foreach (Department item in departmentService.GetAll())
+//{
+//    Console.WriteLine(item);
+//}
+
+
+EmployeeService employeeService = new EmployeeService();
+
+
+Console.WriteLine("employe"); 
+//employeeService.Create("Laman", "", 1);
+
+Employee employee = new Employee("Laman", "Mammadly", 1);
+employeeService.Create(employee);
+
+
+departmentService.AddEmployee(employee);
+

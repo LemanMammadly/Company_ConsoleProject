@@ -50,14 +50,14 @@ public class DepartmentService : IDepartmentInterface
         if(exists != null)
         {
             departmentRepository.Delete(id);
-            //if(employeeRepository.GetAlDepartmentId(id).Count==0)
-            //{
-            //    departmentRepository.Delete(id);
-            //}
-            //else
-            //{
-            //    throw new ObjectDoesNotEmpty(Helper.Errors["ObjectDoesNotEmpty"]);
-            //}
+            if (employeeRepository.GetAlDepartmentId(id).Count == 0)
+            {
+                departmentRepository.Delete(id);
+            }
+            else
+            {
+                throw new ObjectDoesNotEmpty(Helper.Errors["ObjectDoesNotEmpty"]);
+            }
         }
         else
         {
@@ -87,7 +87,12 @@ public class DepartmentService : IDepartmentInterface
 
     public void AddEmployee(Employee employee)
     {
-        throw new NotImplementedException();
+        var existId = employeeRepository.Get(employee.DepartmentId);
+        if (existId == null) 
+        {
+            throw new ObjectNotFoundException(Helper.Errors["ObjectNotFoundException"]);
+        }
+        existId.DepartmentId = employee.DepartmentId;
     }
 
     public List<Employee> GetDepartmentEmployees(string departmentName)
