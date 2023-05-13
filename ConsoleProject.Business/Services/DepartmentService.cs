@@ -65,14 +65,24 @@ public class DepartmentService : IDepartmentInterface
         }
     }
 
-    public List<Department> GetAll()
+    public void Update(string departmentName, string newDepartmentName, int newLimit)
     {
         throw new NotImplementedException();
     }
 
+    public List<Department> GetAll()
+    {
+        return departmentRepository.GetAll();
+    }
+
     public Department GetById(int id)
     {
-        throw new NotImplementedException();
+        var exists = departmentRepository.Get(id);
+        if(exists==null)
+        {
+            throw new ObjectNotFoundException(Helper.Errors["ObjectNotFoundException"]);
+        }
+        return exists;
     }
 
     public void AddEmployee(Employee employee)
@@ -85,9 +95,5 @@ public class DepartmentService : IDepartmentInterface
         throw new NotImplementedException();
     }
 
-    public void Update(string departmentName, string newDepartmentName, int newLimit)
-    {
-        throw new NotImplementedException();
-    }
 }
 

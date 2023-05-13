@@ -57,7 +57,15 @@ departmentService.Create("adsad", 1, 2);
 companyService.GetAllDepartment("sdfss");
 
 
-foreach (Department item in companyService.GetAllDepartment("sdfss"))
+//foreach (Department item in companyService.GetAllDepartment("sdfss"))
+//{
+//    Console.WriteLine(item);
+//}
+
+Console.WriteLine(departmentService.GetById(0));
+
+
+foreach (Department item in departmentService.GetAll())
 {
     Console.WriteLine(item);
 }
