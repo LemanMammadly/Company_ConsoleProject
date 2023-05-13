@@ -7,7 +7,9 @@ public static class Helper
         {"SizeExceptions", "Length doesn't match"},
         {"AlreadyExistException","This object already exists" },
         {"ObjectNotFoundException","Object is not found" },
-        {"SameNameException","Object with this name is already exits" }
+        {"SameNameException","Object with this name is already exits" },
+        {"LimitDoesNotMatchException","Limit does not match" },
+        {"ObjectDoesNotEmpty","Object does not empty" }
     };
 }
 

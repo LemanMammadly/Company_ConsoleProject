@@ -1,4 +1,5 @@
 ﻿using System.Collections.Generic;
+using ConsoleProject.Core.Entities;
 using ConsoleProject.DataAccess.Contexts;
 using ConsoleProject.DataAccess.Interfaces;
 
@@ -28,6 +29,11 @@ public class EmployeeRepository : IRepository<Employee>
     public Employee? Get(int id)
     {
         return DbContext.Employees.Find(e=>e.Id==id);
+    }
+
+    public List<Employee> GetAlDepartmentId(int id)
+    {
+        return DbContext.Employees.FindAll(e => e.DepartmentId == id);
     }
 
     public List<Employee> GetAll()

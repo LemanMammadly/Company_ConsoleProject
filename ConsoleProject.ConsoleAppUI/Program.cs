@@ -9,7 +9,6 @@ companyService.Create("sdfsd");
 
 
 
-
 Console.WriteLine("second");
 companyService.Create("sdk");
 
@@ -28,14 +27,28 @@ foreach (Company item in companyService.GetAll())
 
 //companyService.Delete(3);
 
-companyService.Create("sdffw");
+//companyService.Create("sdffw");
 
 
-foreach (Company item in companyService.GetAll())
-{
-    Console.WriteLine($"{item.CompanyName}   {item.creationTime}");
-}
+//foreach (Company item in companyService.GetAll())
+//{
+//    Console.WriteLine($"{item.CompanyName}   {item.creationTime}");
+//}
 
 
 
-companyService.Create("qwewqe");
+//companyService.Create("qwewqe");
+
+
+DepartmentService departmentService = new DepartmentService();
+
+
+Console.WriteLine("department");
+departmentService.Create("sdf", 1, 1);
+departmentService.Create("asdd", 1, 2);
+departmentService.Delete(0);
+
+companyService.Delete(1);
+
+
+//departmentService.Delete(0);

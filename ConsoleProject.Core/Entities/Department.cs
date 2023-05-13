@@ -16,6 +16,13 @@ public class Department:IEntity
         _id++;
     }
 
+    public Department(string departmentName,int employeeLimit,int companyId):this()
+    {
+        DepartmentName = departmentName;
+        EmployeeLimit = employeeLimit;
+        CompanyId = companyId;
+    }
+
     public override string ToString()
     {
         return $"Id: {Id} Department Name: {DepartmentName}";
