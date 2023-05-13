@@ -22,7 +22,6 @@ public class DepartmentRepository : IRepository<Department>
         Department department=DbContext.Departments.Find(d=>d.Id==entity.Id);
         department.DepartmentName = entity.DepartmentName;
         department.EmployeeLimit = entity.EmployeeLimit;
-        department.CompanyId = entity.CompanyId;
     }
 
     public Department? Get(int id)
