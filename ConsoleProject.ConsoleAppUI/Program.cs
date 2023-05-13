@@ -110,6 +110,8 @@ employeeService.Update(4, "laman", "Mammadli", 1, 2);
 
 //departmentService.Update("sdsdf", "sdF", 2);
 
+employeeService.Delete(2);
+
 foreach (Employee item in departmentService.GetDepartmentEmployees("sdf"))
 {
     Console.WriteLine(item);

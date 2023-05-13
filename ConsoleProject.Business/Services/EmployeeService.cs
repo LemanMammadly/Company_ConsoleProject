@@ -86,7 +86,12 @@ public class EmployeeService : IEmployeeInterface
 
     public void Delete(int id)
     {
-        throw new NotImplementedException();
+        var existEmployee = employeeRepository.Get(id);
+        if(existEmployee==null)
+        {
+            throw new ObjectNotFoundException(Helper.Errors["ObjectNotFoundException"]);
+        }
+        employeeRepository.Delete(id);
     }
 
     public List<Employee> GetAll()
