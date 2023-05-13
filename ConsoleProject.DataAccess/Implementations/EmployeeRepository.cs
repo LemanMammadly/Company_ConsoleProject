@@ -24,6 +24,7 @@ public class EmployeeRepository : IRepository<Employee>
         employee.Name = entity.Name;
         employee.Surname = entity.Surname;
         employee.Salary = entity.Salary;
+        employee.DepartmentId = entity.DepartmentId;
     }
 
     public Employee? Get(int id)
