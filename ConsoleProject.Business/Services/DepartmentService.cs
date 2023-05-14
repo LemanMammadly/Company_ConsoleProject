@@ -90,7 +90,7 @@ public class DepartmentService : IDepartmentInterface
         departmentRepository.Update(existsDepartment);
     }
 
-    public List<Department> GetAllDepartment()
+    public List<Department> GetAllDepartments()
     {
         return departmentRepository.GetAll();
     }

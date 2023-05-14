@@ -8,7 +8,7 @@ public interface IDepartmentInterface
     void DeleteDepartment(int id);
     void UpdateDepartment(string departmentName, string newDepartmentName,int newLimit);
     Department GetByIdDepartment(int id);
-    List<Department> GetAllDepartment();
+    List<Department> GetAllDepartments();
     void AddEmployee(Employee employee,int departmentId);
     List<Employee> GetDepartmentEmployees(string departmentName);
 }
