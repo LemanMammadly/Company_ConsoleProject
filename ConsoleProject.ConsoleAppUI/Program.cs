@@ -1,4 +1,5 @@
-﻿using ConsoleProject.Business.Services;
+﻿using System.ComponentModel.Design;
+using ConsoleProject.Business.Services;
 using ConsoleProject.Core.Entities;
 using ConsoleProject.DataAccess.Contexts;
 using ConsoleProject.DataAccess.Implementations;
@@ -43,19 +44,19 @@ do
     {
         case 1:
             Console.Clear();
-            Create(companyService);
+            CreateCompany(companyService);
             break;
         case 2:
             Console.Clear();
-            Update(companyService);
+            UpdateCompany(companyService);
             break;
         case 3:
             Console.Clear();
-            GetAll(companyService);
+            GetAllCompany(companyService);
             break;
         case 4:
             Console.Clear();
-            GetById(companyService);
+            GetByIdCompany(companyService);
             break;
         case 5:
             Console.Clear();
@@ -63,10 +64,11 @@ do
             break;
         case 6:
             Console.Clear();
-            Delete(companyService);
+            DeleteCompany(companyService);
             break;
         case 7:
             Console.Clear();
+            CreateDepartment(departmentService);
             break;
         case 8:
             Console.Clear();
@@ -107,7 +109,7 @@ do
     }
 } while (true);
 
-void Create(CompanyService companyService)
+void CreateCompany(CompanyService companyService)
 {
     string companyName;
     bool isValidInput = false;
@@ -136,11 +138,11 @@ void Create(CompanyService companyService)
         }
     } while (!isValidInput);
 
-    companyService.Create(companyName);
+    companyService.CreateCompany(companyName);
 }
 
 
-void Update(CompanyService companyService)
+void UpdateCompany(CompanyService companyService)
 {
     string companyName;
     string newCompanyName;
@@ -148,7 +150,7 @@ void Update(CompanyService companyService)
     do
     {
         Console.WriteLine("Update etmek istediyniz sirketin adini daxil edin:");
-        foreach (Company company in companyService.GetAll())
+        foreach (Company company in companyService.GetAllCompany())
         {
             Console.WriteLine($"Şirkətin Adı: {company.CompanyName}");
         }
@@ -187,11 +189,11 @@ void Update(CompanyService companyService)
             Console.WriteLine("Şirkətin adının uzunlugu azdir");
         }
     } while (!isValidInput);
-    companyService.Update(companyName, newCompanyName);
+    companyService.UpdateCompany(companyName, newCompanyName);
 }
 
 
-void Delete(CompanyService companyService)
+void DeleteCompany(CompanyService companyService)
 {
     int companyId;
     bool isValidInput = false;
@@ -199,7 +201,7 @@ void Delete(CompanyService companyService)
     do
     {
         Console.WriteLine("Silmək istədiyiniz şirkətin id-ni daxil edin: ");
-        foreach (Company company in companyService.GetAll())
+        foreach (Company company in companyService.GetAllCompany())
         {
             Console.WriteLine($"ID: {company.Id}, Şirkətin Adı: {company.CompanyName}");
         }
@@ -214,7 +216,7 @@ void Delete(CompanyService companyService)
                 if (!hasDepartments)
                 {
                     isValidInput = true;
-                    companyService.Delete(companyId);
+                    companyService.DeleteCompany(companyId);
                     Console.WriteLine("Şirkət silindi: " + company.CompanyName);
                 }
                 else
@@ -235,21 +237,21 @@ void Delete(CompanyService companyService)
     } while (!isValidInput);
 }
 
-void GetById(CompanyService companyService)
+void GetByIdCompany(CompanyService companyService)
 {
     int companyId;
     bool isValidInput = false;
     do
     {
         Console.WriteLine("Baxmaq istədiyiniz şirkətin id-ni daxil edin: ");
-        foreach (Company company in companyService.GetAll())
+        foreach (Company company in companyService.GetAllCompany())
         {
             Console.WriteLine($"ID: {company.Id}, Şirkətin Adı: {company.CompanyName}");
         }
         string input = Console.ReadLine();
         if (int.TryParse(input, out companyId))
         {
-            var company = companyService.GetById(companyId);
+            var company = DbContext.Companies.Find(c=>c.Id==companyId);
             if (company != null)
             {
                 isValidInput = true;
@@ -257,8 +259,7 @@ void GetById(CompanyService companyService)
             }
             else
             {
-                Console.WriteLine("Daxil edilən id ilə şirkət yoxdur. Düzgün daxil edin.");
-                break;
+                Console.WriteLine("Sirket yoxdur.");
             }
         }
         else
@@ -268,10 +269,10 @@ void GetById(CompanyService companyService)
     } while (!isValidInput);
 }
 
-void GetAll(CompanyService companyService)
+void GetAllCompany(CompanyService companyService)
 {
     Console.WriteLine("Bütün Şirkətlər:");
-    foreach (Company company in companyService.GetAll())
+    foreach (Company company in companyService.GetAllCompany())
     {
         Console.WriteLine($"Şirkətin Adı: {company.CompanyName}");
     }
@@ -285,7 +286,7 @@ void GetAllDepartment(CompanyService companyService)
     do
     {
         Console.WriteLine("Departamentlerini görmək istədiyiniz şirkətin adini daxil edin: ");
-        foreach (Company company in companyService.GetAll())
+        foreach (Company company in companyService.GetAllCompany())
         {
             Console.WriteLine($"ID: {company.Id}, Şirkətin Adı: {company.CompanyName}");
         }
@@ -295,7 +296,10 @@ void GetAllDepartment(CompanyService companyService)
         if (exist!=null)
         {
             var exitsDepartment = departmentRepository.GetCompaniesId(exist.Id);
-            companyService.GetAllDepartment(companyName);
+            foreach (Department item in companyService.GetAllDepartment(companyName))
+            {
+                Console.WriteLine(item.DepartmentName);
+            }
             isValidInput = true;
              if(exitsDepartment.Count==0)
              {
@@ -307,4 +311,57 @@ void GetAllDepartment(CompanyService companyService)
             Console.WriteLine("Bu adda sirket yoxdur");
         }
     } while (!isValidInput);
+}
+
+void CreateDepartment(DepartmentService departmentService)
+{
+    string departmentName;
+    int departmentLimit;
+    int companyId;
+    bool isValidInput = false;
+
+    do
+    {
+        Console.Write("Departmentin adı: ");
+        departmentName = Console.ReadLine();
+
+        Console.Write("Department limitini daxil edin: ");
+        departmentLimit = int.Parse(Console.ReadLine());
+        Console.Write("Departmentin Company ID'sini qeyd edin (Hansi şirkətə aid olduğunu daxil edin): ");
+        foreach (Company company in companyService.GetAllCompany())
+        {
+            Console.WriteLine($"ID: {company.Id}, Şirkətin Adı: {company.CompanyName}");
+        }
+        companyId = int.Parse(Console.ReadLine());
+
+        Department existingDepartment = departmentRepository.GetByName(departmentName.Trim());
+        Company? existingCompany = companyRepository.Get(companyId);
+
+
+        if (existingDepartment == null)
+        {
+            if (departmentLimit > 0)
+            {
+                if (existingCompany != null)
+                {
+                    isValidInput = true;
+                }
+                else
+                {
+                    Console.WriteLine("Daxil edilən company ID ilə şirkət tapılmadı. Düzgün bir company ID daxil edin.");
+                }
+            }
+            else
+            {
+                Console.WriteLine("Limit 0-dan boyuk olmalidir");
+            }
+        }
+        else
+        {
+            Console.WriteLine("Bu adda department movcuddur");
+        }
+
+    } while (!isValidInput);
+
+    departmentService.CreateDepartment(departmentName, departmentLimit,companyId);
 }

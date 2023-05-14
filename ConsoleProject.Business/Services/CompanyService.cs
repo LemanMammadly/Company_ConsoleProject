@@ -17,7 +17,7 @@ public class CompanyService : ICompanyInterface
         departmentRepository = new DepartmentRepository();
     }
 
-    public void Create(string companyName)
+    public void CreateCompany(string companyName)
     {
         string name = companyName.Trim();
         var exits = companyRepository.GetByName(companyName);
@@ -44,7 +44,7 @@ public class CompanyService : ICompanyInterface
 
     }
 
-    public void Delete(int id)
+    public void DeleteCompany(int id)
     {
         var exits = companyRepository.Get(id);
         if(exits != null)
@@ -64,7 +64,7 @@ public class CompanyService : ICompanyInterface
         }
     }
 
-    public void Update(string companyName, string newCompanyName)
+    public void UpdateCompany(string companyName, string newCompanyName)
     {
         var exits = companyRepository.GetByName(companyName);
         string name = newCompanyName.Trim();
@@ -90,12 +90,12 @@ public class CompanyService : ICompanyInterface
     }
 
 
-    public List<Company> GetAll()
+    public List<Company> GetAllCompany()
     {
         return companyRepository.GetAll();
     }
 
-    public Company GetById(int id)
+    public Company GetByIdCompany(int id)
     {
         var exist = companyRepository.Get(id);
         if(exist==null)

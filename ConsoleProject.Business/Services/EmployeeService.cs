@@ -18,7 +18,7 @@ public class EmployeeService : IEmployeeInterface
         departmentRepository = new DepartmentRepository();
     }
 
-    public void Create(Employee employee)
+    public void CreateEmployee(Employee employee)
     {
         string TrimName=employee.Name.Trim();
         string TrimSurname=employee.Surname.Trim();
@@ -44,7 +44,7 @@ public class EmployeeService : IEmployeeInterface
         employeeRepository.Add(employee);
     }
 
-    public void Update(int employeeId, string name, string surname, decimal salary, int departmentId)
+    public void UpdateEmployee(int employeeId, string name, string surname, decimal salary, int departmentId)
     {
         var existsEmployee = employeeRepository.Get(employeeId);
         var existsDepartmentId = departmentRepository.Get(departmentId);
@@ -84,7 +84,7 @@ public class EmployeeService : IEmployeeInterface
         employeeRepository.Update(existsEmployee);
     }
 
-    public void Delete(int id)
+    public void DeleteEmployee(int id)
     {
         var existEmployee = employeeRepository.Get(id);
         if(existEmployee==null)
@@ -94,12 +94,12 @@ public class EmployeeService : IEmployeeInterface
         employeeRepository.Delete(id);
     }
 
-    public List<Employee> GetAll()
+    public List<Employee> GetAllEmployee()
     {
         return employeeRepository.GetAll();
     }
 
-    public Employee GetById(int id)
+    public Employee GetByIdEmployee(int id)
     {
         var existEmployee = employeeRepository.Get(id);
         if(existEmployee==null)
