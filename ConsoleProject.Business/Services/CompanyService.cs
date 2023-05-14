@@ -20,18 +20,25 @@ public class CompanyService : ICompanyInterface
     public void Create(string companyName)
     {
         string name = companyName.Trim();
+        var exits = companyRepository.GetByName(companyName);
+        var existsCompany = companyRepository.GetAll();
         if(name.Length<=0)
         {
             throw new SizeExceptions(Helper.Errors["SizeExceptions"]);
         }
-
-        var exits = companyRepository.GetByName(name);
         if(exits != null)
         {
             throw new AlreadyExistException(Helper.Errors["AlreadyExistException"]);
         }
+        foreach (Company item in existsCompany)
+        {
+            if(item.CompanyName.ToUpper()==companyName.ToUpper())
+            {
+                throw new AlreadyExistException(Helper.Errors["AlreadyExistException"]);
+            }
+        }
         //Thread.Sleep(1000);
-        Company company = new Company(name);
+        Company company = new Company(companyName);
         company.creationTime = DateTime.Now;
         companyRepository.Add(company);
 
