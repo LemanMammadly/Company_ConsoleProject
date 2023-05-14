@@ -34,7 +34,7 @@ do
     Console.WriteLine("16.Bütün employeeləri gətirmək: ");
     Console.WriteLine("17.İd`sinə görə employeeləri gətirmək: ");
     Console.WriteLine("18.Employee silmək: ");
-    Console.WriteLine("19.Menyudan çıx: ");
+    Console.WriteLine("0.Menyudan çıx: ");
     string choose = Console.ReadLine();
     int chooseNum;
     while (!int.TryParse(choose, out chooseNum) || chooseNum > 19 || chooseNum < 1)
@@ -102,17 +102,21 @@ do
             break;
         case 15:
             Console.Clear();
+            UpdateEmployee(employeeService);
             break;
         case 16:
             Console.Clear();
+            GetAllEmployee(employeeService);
             break;
         case 17:
             Console.Clear();
+            GetByIdEmployee(employeeService);
             break;
         case 18:
             Console.Clear();
+            DeleteEmployee(employeeService);
             break;
-        case 19:
+        case 0:
             Console.Clear();
             return;
     }
@@ -721,5 +725,170 @@ void GetDepartmentEmployees(DepartmentService departmentService)
             Console.WriteLine("Bele bir adda department movcud deyil");
         }
 
+    } while (!isValidInput);
+}
+
+
+void GetAllEmployee(EmployeeService employeeService)
+{
+    Console.WriteLine("Bütün Isciler:");
+    foreach (Employee employee in employeeService.GetAllEmployee())
+    {
+        Console.WriteLine($"Isci adi: {employee.Name} Isci Soyad: {employee.Surname}  Isci maasi: {employee.Salary}");
+    }
+}
+
+
+void GetByIdEmployee(EmployeeService employeeService)
+{
+    int employeeId;
+    bool isValidInput = false;
+    do
+    {
+        Console.WriteLine("Baxmaq istədiyiniz employeenin id-ni daxil edin: ");
+        foreach (Employee employee in employeeService.GetAllEmployee())
+        {
+            Console.WriteLine($"Isci Id : {employee.Id} Isci adi: {employee.Name} Isci Soyad: {employee.Surname} ");
+        }
+        string input = Console.ReadLine();
+        if (int.TryParse(input, out employeeId))
+        {
+            var employee = DbContext.Employees.Find(e => e.Id == employeeId);
+            if (employee != null)
+            {
+                isValidInput = true;
+                employeeService.GetByIdEmployee(employeeId);
+                Console.WriteLine($"Employee tapıldı: + {employee.Name}  {employee.Surname}  {employee.Salary}");
+            }
+            else
+            {
+                Console.WriteLine("Employee yoxdur.");
+            }
+        }
+        else
+        {
+            Console.WriteLine("Daxil edilən id düzgün deyil. Düzgün daxil edin.");
+        }
+    } while (!isValidInput);
+}
+
+
+void UpdateEmployee(EmployeeService employeeService)
+{
+    int employeeId;
+    string name;
+    string surname;
+    double salary;
+    int departmentId;
+    bool isValidInput = false;
+
+    do
+    {
+        Console.WriteLine("Update etmek istediyiniz iscinin Id-sini secin: ");
+        foreach (Employee employee in employeeService.GetAllEmployee())
+        {
+            Console.WriteLine($"Isci Id : {employee.Id} Isci adi: {employee.Name} Isci Soyad: {employee.Surname} ");
+        }
+        employeeId = int.Parse(Console.ReadLine());
+        Console.WriteLine("Yeni ad:");
+        name = Console.ReadLine();
+        Console.WriteLine("Yeni soyad:");
+        surname = Console.ReadLine();
+        Console.WriteLine("Yeni maas: ");
+        salary = double.Parse(Console.ReadLine());
+        Console.WriteLine("Yeni department ID : ");
+        departmentId = int.Parse(Console.ReadLine());
+
+
+        var exists = DbContext.Employees.Find(e=>e.Id==employeeId);
+        var existsDepartment = DbContext.Departments.Find(d=>d.Id==departmentId);
+
+        if(exists != null)
+        {
+            if (!string.IsNullOrWhiteSpace(name.Trim()))
+            {
+                if (name.Trim().Length >= 2)
+                {
+                    if (name.Trim().IsOnlyLetters())
+                    {
+                        if (!string.IsNullOrWhiteSpace(surname.Trim()))
+                        {
+                            if (surname.Trim().IsOnlyLetters())
+                            {
+
+                                if (salary > 0)
+                                {
+                                   if(existsDepartment!=null)
+                                   {
+                                        isValidInput = true;
+                                        employeeService.UpdateEmployee(employeeId, name, surname, salary, departmentId);
+                                   }
+                                   else
+                                   {
+                                        Console.WriteLine("Bu Id li department movcud deyil");
+                                   }
+                                }
+                                else
+                                {
+                                    Console.WriteLine("Maas 0 dan boyuk olmalidir");
+                                }
+                            }
+                            else
+                            {
+                                Console.WriteLine("Soyadi duzgun formatda daxil edin");
+                            }
+                        }
+                        else
+                        {
+                            isValidInput = true;
+                        }
+                    }
+                    else
+                    {
+                        Console.WriteLine("Adi duzgun formatda daxil edin");
+                    }
+                }
+                else
+                {
+                    Console.WriteLine("Iscinin adinin uzunlugu 2 den kicik ola bilmez");
+                }
+            }
+            else
+            {
+                Console.WriteLine("Iscinin adini duzgun daxil edin");
+            }
+        }
+        else
+        {
+            Console.WriteLine("Bu ID li isci movcud deyil");
+        }
+    } while (!isValidInput);
+}
+
+
+
+void DeleteEmployee(EmployeeService employeeService)
+{
+    int employeeId;
+    bool isValidInput = false;
+
+    do
+    {
+        Console.WriteLine("Silmek istediyiniz Employeenin Id-sini yazin:");
+        foreach (Employee employee in employeeService.GetAllEmployee())
+        {
+            Console.WriteLine($"Isci Id : {employee.Id} Isci adi: {employee.Name} Isci Soyad: {employee.Surname} ");
+        }
+        employeeId = int.Parse(Console.ReadLine());
+        var existEmployee = DbContext.Employees.Find(e => e.Id == employeeId);
+        if (existEmployee != null)
+        {
+            isValidInput = true;
+            employeeService.DeleteEmployee(employeeId);
+        }
+        else
+        {
+            Console.WriteLine("Bu IDli employee movcud deyil");
+        }
     } while (!isValidInput);
 }
