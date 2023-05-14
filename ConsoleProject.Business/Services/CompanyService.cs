@@ -68,7 +68,12 @@ public class CompanyService : ICompanyInterface
     {
         var exits = companyRepository.GetByName(companyName);
         string name = newCompanyName.Trim();
-        if(name.Length<=0)
+        var exitsNewname = companyRepository.GetByName(name);
+        if(exitsNewname != null)
+        {
+            throw new AlreadyExistException(Helper.Errors["AlreadyExistException"]);
+        }
+        if (name.Length<=0)
         {
             throw new SizeExceptions(Helper.Errors["SizeExceptions"]);
         }

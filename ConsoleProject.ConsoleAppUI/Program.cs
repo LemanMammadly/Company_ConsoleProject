@@ -1,6 +1,6 @@
 ﻿using ConsoleProject.Business.Services;
 using ConsoleProject.Core.Entities;
-
+using ConsoleProject.DataAccess.Contexts;
 
 CompanyService companyService = new CompanyService();
 DepartmentService departmentService = new DepartmentService();
@@ -28,9 +28,10 @@ do
     Console.WriteLine("16.Bütün employeeləri gətirmək: ");
     Console.WriteLine("17.İd`sinə görə employeeləri gətirmək: ");
     Console.WriteLine("18.Employee silmək: ");
+    Console.WriteLine("19.Menyudan çıx: ");
     string choose = Console.ReadLine();
     int chooseNum;
-    while (!int.TryParse(choose, out chooseNum) || chooseNum > 16 || chooseNum < 1)
+    while (!int.TryParse(choose, out chooseNum) || chooseNum > 19 || chooseNum < 1)
     {
         Console.WriteLine("Etmək istədiyiniz əməliyyatı düzgün qeyd edin:");
         choose = Console.ReadLine();
@@ -39,13 +40,15 @@ do
     {
         case 1:
             Console.Clear();
-            Create(out companyService);
+            Create(companyService);
             break;
         case 2:
             Console.Clear();
+            Update(companyService);
             break;
         case 3:
             Console.Clear();
+            GetAll(companyService);
             break;
         case 4:
             Console.Clear();
@@ -97,7 +100,84 @@ do
     }
 } while (true);
 
-void Create(out CompanyService companyService)
+
+void Create(CompanyService companyService)
 {
-    throw new NotImplementedException();
+    string companyName;
+    bool isValidInput = false;
+
+    do
+    {
+        Console.Write("Şirkətin adı: ");
+        companyName = Console.ReadLine();
+
+        if ((!string.IsNullOrWhiteSpace(companyName)) )
+        {
+            Company? existingCompany = DbContext.Companies.Find(c => c.CompanyName.Equals(companyName, StringComparison.OrdinalIgnoreCase));
+
+            if (existingCompany == null)
+            {
+                isValidInput = true;
+            }
+            else
+            {
+                Console.WriteLine("Bu adda şirkət var.Başqa ad daxil edin: \n");
+            }
+        }
+        else
+        {
+            Console.WriteLine("Düzgün şirkət adı daxil edin: .\n");
+        }
+    } while (!isValidInput);
+
+    companyService.Create(companyName);
+}
+
+
+void Update(CompanyService companyService)
+{
+    string companyName;
+    string newCompanyName;
+    bool isValidInput = false;
+    do
+    {
+        Console.WriteLine("Update etmek istediyniz sirketin adini daxil edin:");
+        companyName = Console.ReadLine();
+        Console.WriteLine("Yeni sirket adi daxil edin");
+        newCompanyName = Console.ReadLine();
+        var exist = DbContext.Companies.Find(c => c.CompanyName==companyName);
+        if (companyName.Trim().Length > 0)
+        {
+            if (exist != null)
+            {
+                if (companyName.Trim().ToLower() != newCompanyName.Trim().ToLower())
+                {
+                    isValidInput = true;
+                }
+                else
+                {
+                    Console.WriteLine("Şirkət adı eynidir");
+                }
+            }
+            else
+            {
+                Console.WriteLine("Bu adda şirkət yoxdur");
+            }
+        }
+        else
+        {
+            Console.WriteLine("Şirkətin adının uzunlugu azdir");
+        }
+    } while (!isValidInput);
+    companyService.Update(companyName, newCompanyName);
+}
+
+
+void GetAll(CompanyService companyService)
+{
+    Console.WriteLine("Bütün Şirketler:");
+    foreach (Company company in companyService.GetAll())
+    {
+        Console.WriteLine($"Şirket Adı: {company.CompanyName}");
+    }
 }
