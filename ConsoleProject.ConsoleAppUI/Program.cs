@@ -129,11 +129,43 @@ using ConsoleProject.Core.Entities;
 
 CompanyService companyService = new CompanyService();
 companyService.Create("PullBear");
+companyService.Create("Bershka");
 
-companyService.Create("pulbaar");
+//companyService.Create("pulbaar");
+//companyService.Delete(2);
+
+//companyService.Update("PullBear", "Bershka");
+//Console.WriteLine(companyService.GetById(2)); 
 
 
 foreach (Company item in companyService.GetAll())
 {
-    Console.WriteLine(item.CompanyName);
+    Console.WriteLine($"{item.CompanyName}  id: {item.Id}");
+}
+
+DepartmentService departmentService = new DepartmentService();
+departmentService.Create("Ganjlik Mall",10,1);
+departmentService.Create("28 Mall", 10, 2);
+departmentService.Update("28 Mall", "28 may", 1);
+
+
+foreach (Department item in departmentService.GetAll())
+{
+    Console.WriteLine($"{item.DepartmentName} limit: {item.EmployeeLimit}  id: {item.Id}  CompanyId: {item.CompanyId}");
+}
+
+EmployeeService employeeService = new EmployeeService();
+
+Employee employee1 = new Employee("Laman", "Mammadli", 15000);
+Employee employee2 = new Employee("Nicat", "Mammadli", 20000);
+Employee employee3 = new Employee("Laman", "Muxtarova", 35000);
+
+employeeService.Create(employee1);
+employeeService.Create(employee2);
+employeeService.Create(employee3);
+
+
+foreach (Employee item in employeeService.GetAll())
+{
+    Console.WriteLine($"{item.Name} {item.Surname} salary:{item.Salary} id: {item.Id}");
 }

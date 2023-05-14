@@ -77,7 +77,11 @@ public class DepartmentService : IDepartmentInterface
         {
             throw new SameNameException(Helper.Errors["SameNameException"]);
         }
-        if(newLimit<GetDepartmentEmployees(existsDepartment.DepartmentName).Count)
+        if(newLimit<=0)
+        {
+            throw new LimitDoesNotMatchException(Helper.Errors["LimitDoesNotMatchException"]);
+        }
+        if (newLimit<GetDepartmentEmployees(existsDepartment.DepartmentName).Count)
         {
             throw new LimitDoesNotMatchException(Helper.Errors["LimitDoesNotMatchException"]);
         }
