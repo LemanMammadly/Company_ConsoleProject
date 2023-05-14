@@ -86,6 +86,7 @@ do
             break;
         case 11:
             Console.Clear();
+            GetDepartmentEmployees(departmentService);
             break;
         case 12:
             Console.Clear();
@@ -93,6 +94,7 @@ do
             break;
         case 13:
             Console.Clear();
+            AddEmployee(departmentService);
             break;
         case 14:
             Console.Clear();
@@ -115,7 +117,6 @@ do
             return;
     }
 } while (true);
-
 
 
 void CreateCompany(CompanyService companyService)
@@ -531,7 +532,7 @@ void CreateEmployee(EmployeeService employeeService)
 {
     string name;
     string surname;
-    decimal salary;
+    double salary;
     bool isValidInput = false;
 
     do
@@ -541,7 +542,7 @@ void CreateEmployee(EmployeeService employeeService)
         Console.WriteLine("Iscinin soyadini daxil edinL:");
         surname = Console.ReadLine();
         Console.WriteLine("Iscinin maasini daxil edinL:");
-        salary = int.Parse(Console.ReadLine());
+        salary = double.Parse(Console.ReadLine());
 
         if(!string.IsNullOrWhiteSpace(name.Trim()))
         {
@@ -565,13 +566,17 @@ void CreateEmployee(EmployeeService employeeService)
                         }
                         else
                         {
-                            Console.WriteLine("Soyadi duzgun daxil edin");
+                            Console.WriteLine("Soyadi duzgun formatda daxil edin");
                         }
                     }
                     else
                     {
                         isValidInput = true;
                     }
+                }
+                else
+                {
+                    Console.WriteLine("Adi duzgun formatda daxil edin");
                 }
             }
             else
@@ -583,11 +588,138 @@ void CreateEmployee(EmployeeService employeeService)
         {
             Console.WriteLine("Iscinin adini duzgun daxil edin");
         }
-
-       
-
-
     } while (!isValidInput);
         Employee employee = new Employee(name,surname,salary);
         employeeService.CreateEmployee(employee);
+}
+
+void AddEmployee(DepartmentService departmentService)
+{
+    string name;
+    string surname;
+    double salary;
+    int departmentId;
+    bool isValidInput = false;
+
+    do
+    {
+        Console.WriteLine("Iscinin adini daxil edinL:");
+        name = Console.ReadLine();
+        Console.WriteLine("Iscinin soyadini daxil edinL:");
+        surname = Console.ReadLine();
+        Console.WriteLine("Iscinin maasini daxil edinL:");
+        salary = double.Parse(Console.ReadLine());
+        Console.WriteLine("Iscini elave etmek istedyiniz department ID ni secin:");
+        foreach (Department department in departmentService.GetAllDepartments())
+        {
+            Console.WriteLine($"Department ID: {department.Id} Departmentin Adı: {department.DepartmentName}");
+        }
+        departmentId = int.Parse(Console.ReadLine());
+
+        var existDepartmentId = DbContext.Departments.Find(d => d.Id == departmentId);
+
+        if (!string.IsNullOrWhiteSpace(name.Trim()))
+        {
+            if (name.Trim().Length >= 2)
+            {
+                if (name.Trim().IsOnlyLetters())
+                {
+                    if (!string.IsNullOrWhiteSpace(surname.Trim()))
+                    {
+                        if (surname.Trim().IsOnlyLetters())
+                        {
+                            if (salary > 0)
+                            {
+                                if (existDepartmentId != null)
+                                {
+                                    if (departmentService.GetDepartmentEmployees(existDepartmentId.DepartmentName).Count < existDepartmentId.EmployeeLimit)
+                                    {
+                                        Employee employee = new Employee(name, surname, salary);
+                                        employeeService.CreateEmployee(employee);
+                                        if (employee.DepartmentId==0)
+                                        {
+                                            departmentService.AddEmployee(employee, departmentId);
+                                            isValidInput = true;
+                                        }
+                                        else
+                                        {
+                                            Console.WriteLine("Isci ferqli departmente mexsusdur");
+                                        }
+                                        }
+                                    else
+                                    {
+                                        Console.WriteLine("Limit Isci sayindan az olmamalidir");
+                                    }
+                                }
+                                else
+                                {
+                                    Console.WriteLine("Bu Id li department yoxdur.");
+                                }
+                            }
+                            else
+                            {
+                                Console.WriteLine("Maas 0 dan boyuk olmalidir");
+                            }
+                        }
+                        else
+                        {
+                            Console.WriteLine("Soyadi duzgun formatda daxil edin");
+                        }
+                    }
+                    else
+                    {
+                        isValidInput = true;
+                    }
+                }
+                else
+                {
+                    Console.WriteLine("Adi duzgun formatda daxil edin");
+                }
+            }
+            else
+            {
+                Console.WriteLine("Iscinin adinin uzunlugu 2 den kicik ola bilmez");
+            }
+        }
+        else
+        {
+            Console.WriteLine("Iscinin adini duzgun daxil edin");
+        }
+    } while (!isValidInput);
+}
+
+
+void GetDepartmentEmployees(DepartmentService departmentService)
+{
+    string departmentName;
+    bool isValidInput = false;
+    do
+    {
+        Console.WriteLine("Siyahisini gostermek istedyiniz employeelerin department adini qeyd edin:");
+        departmentName = Console.ReadLine();
+
+        var exists = departmentRepository.GetByName(departmentName);
+        if(exists!=null)
+        {
+            var employess = employeeRepository.GetAlDepartmentId(exists.Id);
+            if(employess.Count != 0)
+            {
+                isValidInput = true;
+                foreach (Employee item in departmentService.GetDepartmentEmployees(departmentName))
+                {
+                    Console.WriteLine(item);
+                }
+            }
+            else
+            {
+                Console.WriteLine("Isci yoxdur");
+                isValidInput = true;
+            }
+        }
+        else
+        {
+            Console.WriteLine("Bele bir adda department movcud deyil");
+        }
+
+    } while (!isValidInput);
 }

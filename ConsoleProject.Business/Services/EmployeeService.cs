@@ -44,7 +44,7 @@ public class EmployeeService : IEmployeeInterface
         employeeRepository.Add(employee);
     }
 
-    public void UpdateEmployee(int employeeId, string name, string surname, decimal salary, int departmentId)
+    public void UpdateEmployee(int employeeId, string name, string surname, double salary, int departmentId)
     {
         var existsEmployee = employeeRepository.Get(employeeId);
         var existsDepartmentId = departmentRepository.Get(departmentId);
