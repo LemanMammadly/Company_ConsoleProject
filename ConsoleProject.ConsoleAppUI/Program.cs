@@ -2,194 +2,102 @@
 using ConsoleProject.Core.Entities;
 
 
-////CompanyService companyService = new CompanyService();
-
-////Console.WriteLine("firts");
-////companyService.Create("sdfsd");
-
-
-
-////Console.WriteLine("second");
-////companyService.Create("sdk");
-
-
-////Console.WriteLine("third");
-////companyService.Create("sdfss");
-
-
-////foreach (Company item in companyService.GetAll())
-////{
-////    Console.WriteLine($"{item.CompanyName}   {item.creationTime}");
-//}
-
-////Console.WriteLine(companyService.GetById(1));
-
-
-////companyService.Delete(3);
-
-////companyService.Create("sdffw");
-
-
-////foreach (Company item in companyService.GetAll())
-////{
-////    Console.WriteLine($"{item.CompanyName}   {item.creationTime}");
-////}
-
-
-
-////companyService.Create("qwewqe");
-
-
-
-
-
-////departmentService.Delete(0);
-
-////companyService.Delete(1);
-
-
-////departmentService.Delete(0);
-
-////companyService.GetAllDepartment("sdfss");
-
-
-////foreach (Department item in companyService.GetAllDepartment("sdfss"))
-////{
-////    Console.WriteLine(item);
-////}
-
-////Console.WriteLine(departmentService.GetById(0));
-
-
-////foreach (Department item in departmentService.GetAll())
-////{
-////    Console.WriteLine(item);
-////}
-
-
-
-
-//Console.WriteLine("employe");
-////employeeService.Create("Laman", "", 1);
-////Console.WriteLine("department");
-
-//DepartmentService departmentService = new DepartmentService();
-//EmployeeService employeeService = new EmployeeService();
-
-//departmentService.Create("sdf", 5, 1);
-//departmentService.Create("asdd", 1, 1);
-//departmentService.Create("adsad", 1, 2);
-
-//Employee employee = new Employee("Laman", "Mammadly", 1);
-//Employee employee1 = new Employee("Laman", "Mammadly", 1);
-//Employee employee2 = new Employee("Laman", "Mammadly", 1);
-//Employee employee3 = new Employee("Laman", "Mammadly", 1);
-//Employee employee4 = new Employee("Laman", "Mammadly", 1);
-//Employee employee5 = new Employee("Laman", "Mammadly", 1);
-
-
-
-//employeeService.Create(employee);
-//employeeService.Create(employee1);
-//employeeService.Create(employee2);
-//employeeService.Create(employee3);
-//employeeService.Create(employee4);
-
-
-
-//departmentService.AddEmployee(employee,1);
-//departmentService.AddEmployee(employee1,1);
-//departmentService.AddEmployee(employee2,1);
-//departmentService.AddEmployee(employee3,1);
-//departmentService.AddEmployee(employee4,1);
-//departmentService.AddEmployee(employee5,1);
-
-
-//employeeService.Update(4, "laman", "Mammadli", 1, 2);
-
-
-////departmentService.Update("sdsdf", "sdF", 2);
-
-//employeeService.Delete(2);
-
-////foreach (Employee item in departmentService.GetDepartmentEmployees("sdf"))
-////{
-////    Console.WriteLine(item);
-////}
-
-
-////foreach (Employee item in employeeService.GetAll())
-////{
-////    Console.WriteLine(item);
-////}
-
-
-//Console.WriteLine(employeeService.GetById(3));
-
-
 CompanyService companyService = new CompanyService();
-companyService.Create("PullBear");
-companyService.Create("Bershka");
-
-//companyService.Create("pulbaar");
-//companyService.Delete(2);
-
-//companyService.Update("PullBear", "Bershka");
-//Console.WriteLine(companyService.GetById(2)); 
-
-
-Console.WriteLine("COMPANIESSS:");
-
-foreach (Company item in companyService.GetAll())
-{
-    Console.WriteLine($"{item.CompanyName}  id: {item.Id}");
-}
-
-Console.WriteLine("//////////////////////////");
-
-
-
-Console.WriteLine("DEPARTMENTSSS:");
-
 DepartmentService departmentService = new DepartmentService();
-departmentService.Create("Ganjlik Mall",10,1);
-departmentService.Create("28 Mall", 10, 2);
-departmentService.Update("28 Mall", "28 may", 1);
-
-
-foreach (Department item in departmentService.GetAll())
-{
-    Console.WriteLine($"{item.DepartmentName} limit: {item.EmployeeLimit}  id: {item.Id}  CompanyId: {item.CompanyId}");
-}
-
-
 EmployeeService employeeService = new EmployeeService();
 
-Employee employee1 = new Employee("Laman", "Mammadli", 15000);
-Employee employee2 = new Employee("Nicat", "Mammadli", 20000);
-Employee employee3 = new Employee("Laman", "Muxtarova", 35000);
-
-employeeService.Create(employee1);
-employeeService.Create(employee2);
-employeeService.Create(employee3);
-
-departmentService.AddEmployee(employee1, 1);
-departmentService.AddEmployee(employee2, 1);
-departmentService.AddEmployee(employee3, 1);
-
-Console.WriteLine("//////////////////////////");
-
-foreach (Employee item in departmentService.GetDepartmentEmployees("Ganjlik Mall"))
+do
 {
-    Console.WriteLine(item);
-}
+    Console.WriteLine("*************Welcomeee!!!!!*************");
+    Console.WriteLine("Etmek istediyiniz emeliyyatin reqemini daxil edin:\n ");
+    Console.WriteLine("1.Şirkət yaratmaq: ");
+    Console.WriteLine("2.Şirkət update etmek: ");
+    Console.WriteLine("3.Bütün şirkətləri göstərmək: ");
+    Console.WriteLine("4.İd`sinə görə şirkəti gətirmək: ");
+    Console.WriteLine("5.Şirkətdəki bütün departamentləri göstərmək: ");
+    Console.WriteLine("6.Şirkət silmək: ");
+    Console.WriteLine("7.Departament yaratmaq: ");
+    Console.WriteLine("8.Departament update etmek: ");
+    Console.WriteLine("9.Bütün departamentləri göstərmək: ");
+    Console.WriteLine("10.İd`sinə görə departameni gətirmək: ");
+    Console.WriteLine("11.Departamentdəki bütün employeeleri göstərmək: ");
+    Console.WriteLine("12.Departament silmək: ");
+    Console.WriteLine("13.Departament yaratmaq: ");
+    Console.WriteLine("14.Employee yaratmaq: ");
+    Console.WriteLine("15.Employee update etmək: ");
+    Console.WriteLine("16.Bütün employeeləri gətirmək: ");
+    Console.WriteLine("17.İd`sinə görə employeeləri gətirmək: ");
+    Console.WriteLine("18.Employee silmək: ");
+    string choose = Console.ReadLine();
+    int chooseNum;
+    while (!int.TryParse(choose, out chooseNum) || chooseNum > 16 || chooseNum < 1)
+    {
+        Console.WriteLine("Etmək istədiyiniz əməliyyatı düzgün qeyd edin:");
+        choose = Console.ReadLine();
+    }
+    switch (chooseNum)
+    {
+        case 1:
+            Console.Clear();
+            Create(out companyService);
+            break;
+        case 2:
+            Console.Clear();
+            break;
+        case 3:
+            Console.Clear();
+            break;
+        case 4:
+            Console.Clear();
+            break;
+        case 5:
+            Console.Clear();
+            break;
+        case 6:
+            Console.Clear();
+            break;
+        case 7:
+            Console.Clear();
+            break;
+        case 8:
+            Console.Clear();
+            break;
+        case 9:
+            Console.Clear();
+            break;
+        case 10:
+            Console.Clear();
+            break;
+        case 11:
+            Console.Clear();
+            break;
+        case 12:
+            Console.Clear();
+            break;
+        case 13:
+            Console.Clear();
+            break;
+        case 14:
+            Console.Clear();
+            break;
+        case 15:
+            Console.Clear();
+            break;
+        case 16:
+            Console.Clear();
+            break;
+        case 17:
+            Console.Clear();
+            break;
+        case 18:
+            Console.Clear();
+            break;
+        case 19:
+            return;
+    }
+} while (true);
 
-departmentService.Update("Ganjlik Mall", "Sahil", 4);
-
-Console.WriteLine("EMPLOYESSSSSSS:");
-
-
-foreach (Employee item in employeeService.GetAll())
+void Create(out CompanyService companyService)
 {
-    Console.WriteLine($"{item.Name} {item.Surname} salary:{item.Salary} id: {item.Id}");
+    throw new NotImplementedException();
 }
