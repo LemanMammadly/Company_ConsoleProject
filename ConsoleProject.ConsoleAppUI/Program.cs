@@ -138,10 +138,18 @@ companyService.Create("Bershka");
 //Console.WriteLine(companyService.GetById(2)); 
 
 
+Console.WriteLine("COMPANIESSS:");
+
 foreach (Company item in companyService.GetAll())
 {
     Console.WriteLine($"{item.CompanyName}  id: {item.Id}");
 }
+
+Console.WriteLine("//////////////////////////");
+
+
+
+Console.WriteLine("DEPARTMENTSSS:");
 
 DepartmentService departmentService = new DepartmentService();
 departmentService.Create("Ganjlik Mall",10,1);
@@ -154,6 +162,7 @@ foreach (Department item in departmentService.GetAll())
     Console.WriteLine($"{item.DepartmentName} limit: {item.EmployeeLimit}  id: {item.Id}  CompanyId: {item.CompanyId}");
 }
 
+
 EmployeeService employeeService = new EmployeeService();
 
 Employee employee1 = new Employee("Laman", "Mammadli", 15000);
@@ -163,6 +172,21 @@ Employee employee3 = new Employee("Laman", "Muxtarova", 35000);
 employeeService.Create(employee1);
 employeeService.Create(employee2);
 employeeService.Create(employee3);
+
+departmentService.AddEmployee(employee1, 1);
+departmentService.AddEmployee(employee2, 1);
+departmentService.AddEmployee(employee3, 1);
+
+Console.WriteLine("//////////////////////////");
+
+foreach (Employee item in departmentService.GetDepartmentEmployees("Ganjlik Mall"))
+{
+    Console.WriteLine(item);
+}
+
+departmentService.Update("Ganjlik Mall", "Sahil", 4);
+
+Console.WriteLine("EMPLOYESSSSSSS:");
 
 
 foreach (Employee item in employeeService.GetAll())

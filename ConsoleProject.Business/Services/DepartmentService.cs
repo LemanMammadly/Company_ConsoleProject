@@ -127,6 +127,10 @@ public class DepartmentService : IDepartmentInterface
     public List<Employee> GetDepartmentEmployees(string departmentName)
     {
         var departmentId = departmentRepository.GetByName(departmentName);
+        if(departmentId==null)
+        {
+            throw new ObjectNotFoundException(Helper.Errors["ObjectNotFoundException"]);
+        }
         var employess = employeeRepository.GetAlDepartmentId(departmentId.Id);
         return employess;
     }
