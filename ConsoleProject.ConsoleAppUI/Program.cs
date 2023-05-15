@@ -78,7 +78,7 @@ do
             break;
         case 9:
             Console.Clear();
-            GetAllDepartments(departmentService); 
+            GetAllDepartments(departmentService);
             break;
         case 10:
             Console.Clear();
@@ -133,7 +133,7 @@ void CreateCompany(CompanyService companyService)
         Console.Write("Şirkətin adı: ");
         companyName = Console.ReadLine();
 
-        if ((!string.IsNullOrWhiteSpace(companyName)) )
+        if ((!string.IsNullOrWhiteSpace(companyName)))
         {
             Company? existingCompany = DbContext.Companies.Find(c => c.CompanyName.Equals(companyName, StringComparison.OrdinalIgnoreCase));
 
@@ -171,13 +171,13 @@ void UpdateCompany(CompanyService companyService)
         companyName = Console.ReadLine();
         Console.WriteLine("Yeni sirket adi daxil edin");
         newCompanyName = Console.ReadLine();
-        var exist = DbContext.Companies.Find(c => c.CompanyName==companyName);
-        var existNewname = DbContext.Companies.Find(c => c.CompanyName==newCompanyName);
+        var exist = DbContext.Companies.Find(c => c.CompanyName == companyName);
+        var existNewname = DbContext.Companies.Find(c => c.CompanyName == newCompanyName);
         if (companyName.Trim().Length > 0)
         {
             if (exist != null)
             {
-                if(existNewname==null)
+                if (existNewname == null)
                 {
                     if (companyName.Trim().ToLower() != newCompanyName.Trim().ToLower())
                     {
@@ -265,7 +265,7 @@ void GetByIdCompany(CompanyService companyService)
         string input = Console.ReadLine();
         if (int.TryParse(input, out companyId))
         {
-            var company = DbContext.Companies.Find(c=>c.Id==companyId);
+            var company = DbContext.Companies.Find(c => c.Id == companyId);
             if (company != null)
             {
                 isValidInput = true;
@@ -307,7 +307,7 @@ void GetAllDepartment(CompanyService companyService)
         companyName = Console.ReadLine();
 
         var exist = companyRepository.GetByName(companyName);
-        if (exist!=null)
+        if (exist != null)
         {
             var exitsDepartment = departmentRepository.GetCompaniesId(exist.Id);
             foreach (Department item in companyService.GetAllDepartment(companyName))
@@ -315,10 +315,10 @@ void GetAllDepartment(CompanyService companyService)
                 Console.WriteLine(item.DepartmentName);
             }
             isValidInput = true;
-             if(exitsDepartment.Count==0)
-             {
+            if (exitsDepartment.Count == 0)
+            {
                 Console.WriteLine("Sirketin departmentleri yoxdur.");
-             }
+            }
         }
         else
         {
@@ -378,7 +378,7 @@ void CreateDepartment(DepartmentService departmentService)
 
     } while (!isValidInput);
 
-    departmentService.CreateDepartment(departmentName, departmentLimit,companyId);
+    departmentService.CreateDepartment(departmentName, departmentLimit, companyId);
 }
 
 
@@ -409,15 +409,15 @@ void UpdateDepartment(DepartmentService departmentService)
 
         if (existingDepartment != null)
         {
-            if(existingNewDepartment==null)
+            if (existingNewDepartment == null)
             {
                 if (!string.IsNullOrWhiteSpace(newDepartmentName))
                 {
                     if (newDepartmentName.Trim().ToUpper() != departmentName.Trim().ToUpper())
                     {
-                        if (newDepartmentLimit>departmentService.GetDepartmentEmployees(departmentName).Count)
+                        if (newDepartmentLimit > departmentService.GetDepartmentEmployees(departmentName).Count)
                         {
-                            if(newDepartmentLimit > 0)
+                            if (newDepartmentLimit > 0)
                             {
                                 isValidInput = true;
                                 departmentService.UpdateDepartment(departmentName, newDepartmentName, newDepartmentLimit);
@@ -446,7 +446,7 @@ void UpdateDepartment(DepartmentService departmentService)
             {
                 Console.WriteLine("Bu adda department movcuddur");
             }
-            }
+        }
         else
         {
             Console.WriteLine("Bele bir department movcud deyil");
@@ -469,9 +469,9 @@ void DeleteDepartment(DepartmentService departmentService)
         }
         departmentId = int.Parse(Console.ReadLine());
         var existDepartment = departmentRepository.Get(departmentId);
-        if(existDepartment != null)
+        if (existDepartment != null)
         {
-            if(employeeRepository.GetAlDepartmentId(departmentId).Count == 0)
+            if (employeeRepository.GetAlDepartmentId(departmentId).Count == 0)
             {
                 isValidInput = true;
                 departmentService.DeleteDepartment(departmentId);
@@ -517,7 +517,7 @@ void GetByIdDepartment(DepartmentService departmentService)
             if (department != null)
             {
                 isValidInput = true;
-                Console.WriteLine("Department tapıldı: " + department.DepartmentName );
+                Console.WriteLine("Department tapıldı: " + department.DepartmentName);
             }
             else
             {
@@ -548,11 +548,11 @@ void CreateEmployee(EmployeeService employeeService)
         Console.WriteLine("Iscinin maasini daxil edinL:");
         salary = double.Parse(Console.ReadLine());
 
-        if(!string.IsNullOrWhiteSpace(name.Trim()))
+        if (!string.IsNullOrWhiteSpace(name.Trim()))
         {
-            if(name.Trim().Length>=2)
+            if (name.Trim().Length >= 2)
             {
-                if(name.Trim().IsOnlyLetters())
+                if (name.Trim().IsOnlyLetters())
                 {
                     if (!string.IsNullOrWhiteSpace(surname.Trim()))
                     {
@@ -593,8 +593,8 @@ void CreateEmployee(EmployeeService employeeService)
             Console.WriteLine("Iscinin adini duzgun daxil edin");
         }
     } while (!isValidInput);
-        Employee employee = new Employee(name,surname,salary);
-        employeeService.CreateEmployee(employee);
+    Employee employee = new Employee(name, surname, salary);
+    employeeService.CreateEmployee(employee);
 }
 
 void AddEmployee(DepartmentService departmentService)
@@ -640,7 +640,7 @@ void AddEmployee(DepartmentService departmentService)
                                     {
                                         Employee employee = new Employee(name, surname, salary);
                                         employeeService.CreateEmployee(employee);
-                                        if (employee.DepartmentId==0)
+                                        if (employee.DepartmentId == 0)
                                         {
                                             departmentService.AddEmployee(employee, departmentId);
                                             isValidInput = true;
@@ -649,7 +649,7 @@ void AddEmployee(DepartmentService departmentService)
                                         {
                                             Console.WriteLine("Isci ferqli departmente mexsusdur");
                                         }
-                                        }
+                                    }
                                     else
                                     {
                                         Console.WriteLine("Limit Isci sayindan az olmamalidir");
@@ -703,10 +703,10 @@ void GetDepartmentEmployees(DepartmentService departmentService)
         departmentName = Console.ReadLine();
 
         var exists = departmentRepository.GetByName(departmentName);
-        if(exists!=null)
+        if (exists != null)
         {
             var employess = employeeRepository.GetAlDepartmentId(exists.Id);
-            if(employess.Count != 0)
+            if (employess.Count != 0)
             {
                 isValidInput = true;
                 foreach (Employee item in departmentService.GetDepartmentEmployees(departmentName))
@@ -800,10 +800,10 @@ void UpdateEmployee(EmployeeService employeeService)
         departmentId = int.Parse(Console.ReadLine());
 
 
-        var exists = DbContext.Employees.Find(e=>e.Id==employeeId);
-        var existsDepartment = DbContext.Departments.Find(d=>d.Id==departmentId);
+        var exists = DbContext.Employees.Find(e => e.Id == employeeId);
+        var existsDepartment = DbContext.Departments.Find(d => d.Id == departmentId);
 
-        if(exists != null)
+        if (exists != null)
         {
             if (!string.IsNullOrWhiteSpace(name.Trim()))
             {
@@ -818,15 +818,15 @@ void UpdateEmployee(EmployeeService employeeService)
 
                                 if (salary > 0)
                                 {
-                                   if(existsDepartment!=null)
-                                   {
+                                    if (existsDepartment != null)
+                                    {
                                         isValidInput = true;
                                         employeeService.UpdateEmployee(employeeId, name, surname, salary, departmentId);
-                                   }
-                                   else
-                                   {
+                                    }
+                                    else
+                                    {
                                         Console.WriteLine("Bu Id li department movcud deyil");
-                                   }
+                                    }
                                 }
                                 else
                                 {

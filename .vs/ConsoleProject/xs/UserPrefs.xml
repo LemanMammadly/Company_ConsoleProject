@@ -1,25 +1,20 @@
-﻿<Properties StartupConfiguration="{1D47664C-35DF-4B59-A724-8A83F260F3E8}|Default" GitUserInfo="UsingMD">
+﻿<Properties GitUserInfo="UsingMD" StartupConfiguration="{1D47664C-35DF-4B59-A724-8A83F260F3E8}|Default">
   <MonoDevelop.Ide.DebuggingService.Breakpoints>
     <BreakpointStore />
   </MonoDevelop.Ide.DebuggingService.Breakpoints>
   <MultiItemStartupConfigurations />
-  <MonoDevelop.Ide.Workbench ActiveDocument="ConsoleProject.Business/Services/EmployeeService.cs">
+  <MonoDevelop.Ide.DebuggingService.PinnedWatches />
+  <MonoDevelop.Ide.Workbench ActiveDocument="ConsoleProject.ConsoleAppUI/Program.cs">
     <Files>
-      <File FileName="ConsoleProject.ConsoleAppUI/Program.cs" />
-      <File FileName="ConsoleProject.Business/Services/DepartmentService.cs" />
-      <File FileName="ConsoleProject.Business/Services/EmployeeService.cs" Line="20" Column="1" />
+      <File FileName="ConsoleProject.ConsoleAppUI/Program.cs" Line="6" Column="47" />
     </Files>
     <Pads>
       <Pad Id="ProjectPad">
         <State name="__root__">
-          <Node name="ConsoleProject" expanded="True">
+          <Node name="ConsoleProject">
             <Node name="ConsoleProject.Business" expanded="True">
-              <Node name="Exceptions" expanded="True" />
-              <Node name="Helpers" expanded="True" />
               <Node name="Interfaces" expanded="True" />
-              <Node name="Services" expanded="True">
-                <Node name="EmployeeService.cs" selected="True" />
-              </Node>
+              <Node name="Services" expanded="True" />
             </Node>
             <Node name="ConsoleProject.ConsoleAppUI" expanded="True" />
             <Node name="ConsoleProject.Core" expanded="True">
@@ -28,14 +23,12 @@
             </Node>
             <Node name="ConsoleProject.DataAccess" expanded="True">
               <Node name="Implementations" expanded="True" />
-              <Node name="Interfaces" expanded="True" />
             </Node>
           </Node>
         </State>
       </Pad>
     </Pads>
   </MonoDevelop.Ide.Workbench>
-  <MonoDevelop.Ide.DebuggingService.PinnedWatches />
-  <MonoDevelop.Ide.ItemProperties.ConsoleProject.ConsoleAppUI PreferredExecutionTarget="MonoDevelop.Default" />
   <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" />
+  <MonoDevelop.Ide.ItemProperties.ConsoleProject.ConsoleAppUI PreferredExecutionTarget="MonoDevelop.Default" />
 </Properties>

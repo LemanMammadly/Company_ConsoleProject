@@ -2,6 +2,7 @@
 using ConsoleProject.Business.Helpers;
 using ConsoleProject.Business.Interfaces;
 using ConsoleProject.Core.Entities;
+using ConsoleProject.DataAccess.Contexts;
 using ConsoleProject.DataAccess.Implementations;
 
 namespace ConsoleProject.Business.Services;
@@ -72,6 +73,13 @@ public class CompanyService : ICompanyInterface
         if(exitsNewname != null)
         {
             throw new AlreadyExistException(Helper.Errors["AlreadyExistException"]);
+        }
+        foreach (var item in DbContext.Companies)
+        {
+            if(item.CompanyName.Trim().ToLower() == newCompanyName.Trim().ToLower())
+            {
+                throw new AlreadyExistException(Helper.Errors["AlreadyExistException"]);
+            }
         }
         if (name.Length<=0)
         {
