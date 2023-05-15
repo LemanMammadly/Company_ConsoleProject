@@ -171,8 +171,8 @@ void UpdateCompany(CompanyService companyService)
         companyName = Console.ReadLine();
         Console.WriteLine("Yeni sirket adi daxil edin");
         newCompanyName = Console.ReadLine();
-        var exist = DbContext.Companies.Find(c => c.CompanyName == companyName);
-        var existNewname = DbContext.Companies.Find(c => c.CompanyName == newCompanyName);
+        var exist = DbContext.Companies.Find(c => c.CompanyName.ToLower() == companyName.ToLower());
+        var existNewname = DbContext.Companies.Find(c => c.CompanyName.ToLower() == newCompanyName.ToLower());
         if (companyName.Trim().Length > 0)
         {
             if (exist != null)
@@ -340,7 +340,7 @@ void CreateDepartment(DepartmentService departmentService)
         departmentName = Console.ReadLine();
 
         Console.Write("Department limitini daxil edin: ");
-        departmentLimit = int.Parse(Console.ReadLine());
+        string limitStr = Console.ReadLine();
 
         Console.Write("Departmentin Company ID'sini qeyd edin (Hansi şirkətə aid olduğunu daxil edin): ");
         foreach (Company company in companyService.GetAllCompany())
@@ -355,11 +355,14 @@ void CreateDepartment(DepartmentService departmentService)
 
         if (existingDepartment == null)
         {
-            if (departmentLimit > 0)
+            if(int.TryParse(limitStr,out departmentLimit))
+            {
+            if (departmentLimit > 0 )
             {
                 if (existingCompany != null)
                 {
                     isValidInput = true;
+                    departmentService.CreateDepartment(departmentName, departmentLimit, companyId);
                 }
                 else
                 {
@@ -370,6 +373,11 @@ void CreateDepartment(DepartmentService departmentService)
             {
                 Console.WriteLine("Limit 0-dan boyuk olmalidir");
             }
+            }
+            else
+            {
+                Console.WriteLine("Id dogru formatda deyil");
+            }
         }
         else
         {
@@ -378,7 +386,6 @@ void CreateDepartment(DepartmentService departmentService)
 
     } while (!isValidInput);
 
-    departmentService.CreateDepartment(departmentName, departmentLimit, companyId);
 }
 
 
@@ -467,7 +474,9 @@ void DeleteDepartment(DepartmentService departmentService)
         {
             Console.WriteLine($"Department ID: {department.Id} Departmentin Adı: {department.DepartmentName}");
         }
-        departmentId = int.Parse(Console.ReadLine());
+        string departmentIdstr = Console.ReadLine();
+        if(int.TryParse(departmentIdstr,out departmentId))
+        {
         var existDepartment = departmentRepository.Get(departmentId);
         if (existDepartment != null)
         {
@@ -484,6 +493,11 @@ void DeleteDepartment(DepartmentService departmentService)
         else
         {
             Console.WriteLine("Bu id li department movcud deyil");
+        }
+        }
+        else
+        {
+            Console.WriteLine("Id dogru formatda daxil olunmayib");
         }
 
     } while (!isValidInput);

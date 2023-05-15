@@ -8,5 +8,6 @@ public static class Extension
 	{
 		return Regex.IsMatch(value, @"^[a-zA-Z]+$");
 	}
+
 }
 
